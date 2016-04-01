@@ -1,0 +1,58 @@
+Matt Dieselman
+HVZ A
+IGME 202.1
+
+-------------------------
+Notes
+-------------------------
+Auto Agents ICE was used as a base for this project and there for credit is due for some code.
+Zombies will seek a random point on the map once all humans are killed.
+Humans CAN be run off the map. They will return eventually.
+Art assets gotten from:
+human: http://opengameart.org/content/character-rpg-sprites
+zombie: http://opengameart.org/content/zombie-rpg-sprites
+trees: http://opengameart.org/content/top-down-foliage-collection
+
+-------------------------
+Human Characters
+-------------------------
+The Human class is a child class of Vehicle.
+Humans wander until zombie is with in range of them.
+Humans evade zombies that are near to them.
+Humans will attempt to return to the center of the map if they leave the park (lighter green rectangle). (this is simply a much higher scaled force to ensure that they still attempt to flee zombies)
+
+-------------------------
+Zombie Characters
+-------------------------
+The Zombie class is a child of the Vehicle class.
+Zombies ALWAYS chase the nearest human.
+Zombies wander when there are no humans.
+Zombies will attempt to go to the center of the map if outside the park (again this is a higher scaled force, so they will still attempt to track humans, but the center smells tastier).
+
+-------------------------
+Collisions
+-------------------------
+Collisions are based on the zombie hitbox. (bounding box around them);
+Humans that get too close to the zombie will be eaten, then turned into a zombie themselves.
+
+-------------------------
+Debug Features
+-------------------------
+SPACE - Turns on debug mode. This allows the user to see each vehicles forward,right,stearing force, and if applicable, the closes human.
+F - Turns off Flee Mode. This prevents the humans from fleeing. Can be used to check collisions without having to wait for the entire simulation to run.
+DEBUG EXPLAINED:
+	black = closes human
+	red = right
+	dark blue = front
+	light blue = evade direction
+	green line = steering force
+	yellow line = vector to humans next position
+	yellow ellipse = next position
+	black ellipse = wander position
+
+-------------------------
+Above and Beyond
+-------------------------
+Interactivity:
+	LEFT MOUSE BUTTON = spawn new zombie
+	RIGHT MOUSE BUTTON = spawn new human
